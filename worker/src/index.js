@@ -1,5 +1,6 @@
 import { Hono } from "hono/tiny";
 import { getPageHtml } from "./page.js";
+import { getIos27PageHtml } from "./ios27-page.js";
 import { parseCoords, gcj02ToWgs84, toWgs84, round6, inRange } from "./parse.js";
 
 const app = new Hono();
@@ -12,6 +13,25 @@ app.use('/api/*', async (c, next) => {
 
 app.get("/", (c) => {
   return c.html(getPageHtml());
+});
+
+// iOS 27+ CoreDevice 实验入口。与旧 gs-loc MITM 页面分开，避免尚未完成的
+// transport 误伤现有用户。
+app.get("/ios27", (c) => {
+  return c.html(getIos27PageHtml());
+});
+
+app.get("/api/ios27/capabilities", (c) => {
+  c.header("Access-Control-Allow-Origin", "*");
+  return c.json({
+    version: 1,
+    legacyMitm: true,
+    coreDeviceFrontend: true,
+    browserRawTcp: false,
+    transportRequired: true,
+    localDevVPNRole: "device-tunnel-only",
+    coreDevicePath: ["RemotePairing", "RSD", "DVT", "LocationSimulation"]
+  });
 });
 
 // 地图链接解析: 供快捷指令调用。
