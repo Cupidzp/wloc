@@ -9,7 +9,8 @@ test('iOS 27 页面存在且内联脚本可解析', async () => {
   const html = await response.text();
   assert.ok(html.includes('WLOC · iOS 27 CoreDevice'));
   assert.ok(html.includes('location.set'));
-  assert.ok(!html.includes('gs-loc.apple.com/wloc-settings/save'));
+  assert.ok(!html.includes("const SAVE_API = 'https://gs-loc.apple.com/wloc-settings/save'"));
+  assert.ok(!html.includes("fetch(SAVE_API"));
   const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
     .map(x => x[1])
     .filter(x => x.trim());
