@@ -32,13 +32,13 @@ Egern 沿用上游 Surge 模块兼容说明，尚未单独复核。Stash 使用�
 
 | 快捷指令 | 安装入口 | 用途 |
 | --- | --- | --- |
-| wloc 设置地理位置 | [https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01](https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01) | 从地图分享位置，解析坐标并保存到代理客户端 |
+| WLOC设置位置 xepes0 | [https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01](https://www.icloud.com/shortcuts/0a6465168d554135b78008a8b4bd7c01) | 从地图分享位置，解析坐标并保存到代理客户端 |
 | wloc 清理恢复位置 | [https://www.icloud.com/shortcuts/f42632d406504f24a2cd163af4fe012f](https://www.icloud.com/shortcuts/f42632d406504f24a2cd163af4fe012f) | 清除已保存的虚拟坐标 |
 
 **使用步骤：**
 
 1. 先启用本仓库对应的代理模块，完成 MITM 证书安装与信任。
-2. 在苹果地图长按选点 → 共享 → 选择「wloc 设置地理位置」；高德地图可通过「分享 → 更多」进入分享菜单。
+2. 在苹果地图长按选点 → 共享 → 选择「WLOC设置位置 xepes0」；高德地图可通过「分享 → 更多」进入分享菜单。
 3. 运行后打开地图验证结果。需要恢复时，运行「wloc 清理恢复位置」。若模块参数另设了坐标，还需关闭模块或恢复默认参数。
 
 > 设置位置指令基于原作者版本，由维护者将解析地址更新为 `https://wloc.xepesw.workers.dev/api/parse` 并重新分享；恢复位置指令仍为原作者分享。已安装的旧指令不会自动更新，请备份后安装新版或手动替换解析地址。尚未独立复核新版指令的真机运行结果。具体操作见[快捷指令迁移说明](docs/shortcut-guide.md#快捷指令)。
